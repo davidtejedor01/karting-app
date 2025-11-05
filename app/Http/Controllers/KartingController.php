@@ -12,8 +12,24 @@ class KartingController extends Controller
     /* Lista todos */
     public function index(Request $request)
     {
-        $filterXname = $request->query("filter_name");
-        $kartings = $filterXname ? Karting::where('name', 'like', "%$filterXname%")->get() : Karting::all();
+        $query = Karting::query();
+
+        // Filtro por nombre
+        if ($name = $request->query('filter_name')) {
+            $query->where('name', 'like', "%{$name}%");
+        }
+
+        // Filtro por velocidad mínima
+        if ($min = $request->query('min_speed')) {
+            $query->where('speed', '>=', $min);
+        }
+
+        // Filtro por velocidad máxima
+        if ($max = $request->query('max_speed')) {
+            $query->where('speed', '<=', $max);
+        }
+
+        $kartings = $query->get();
 
         return view('kartings.index', compact('kartings'));
     }

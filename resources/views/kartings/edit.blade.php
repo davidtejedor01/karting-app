@@ -1,50 +1,15 @@
-<!-- resources/views/kartings/edit.blade.php -->
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Karting</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+@section('title', 'Editar Karting')
 
-<body>
-    <div class="container mt-5">
-        <h1>Editar Karting</h1>
-        <a href="{{ route('kartings.index') }}" class="btn btn-secondary mb-3">Volver</a>
+@section('content')
+    <h1>Editar Karting</h1>
+    <a href="{{ route('kartings.index') }}" class="btn btn-secondary mb-3">Volver</a>
 
-        <form action="{{ route('kartings.update', $karting->id) }}" method="POST">
-            @csrf
-            @method('PUT')
-
-            <div class="mb-3">
-                <label>Nombre</label>
-                <input type="text" name="name" class="form-control" value="{{ old('name', $karting->name) }}">
-                @error('name')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="mb-3">
-                <label>Velocidad</label>
-                <input type="number" name="speed" class="form-control" value="{{ old('speed', $karting->speed) }}">
-                @error('speed')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="mb-3">
-                <label>Color</label>
-                <input type="text" name="color" class="form-control" value="{{ old('color', $karting->color) }}">
-                @error('color')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <button type="submit" class="btn btn-primary">Actualizar</button>
-        </form>
-    </div>
-</body>
-
-</html>
+    <form action="{{ route('kartings.update', $karting->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        @include('layouts.form', ['karting' => $karting])
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+@endsection
