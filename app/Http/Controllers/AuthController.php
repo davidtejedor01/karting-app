@@ -12,9 +12,8 @@ class AuthController extends Controller
     public function showLoginForm()
     {
         // Si ya está logueado, mandalo al CRUD directamente
-        if (Auth::check()) {
+        if (Auth::check())
             return redirect()->route('materias.index');
-        }
 
         return view('welcome');
     }

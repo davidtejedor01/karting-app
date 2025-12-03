@@ -15,9 +15,8 @@ class MateriaController extends Controller
         $query = Materia::query();
 
         // Filtro por nombre
-        if ($name = $request->query('filter_name')) {
+        if ($name = $request->query('filter_name'))
             $query->where('nombre', 'like', "%{$name}%");
-        }
 
         $materias = $query->get();
 
