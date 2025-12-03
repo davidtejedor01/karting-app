@@ -54,16 +54,16 @@ Contiene las vistas y componentes de frontend:
 
 ### 2. Instalación
 
-1. Clona el repositorio: git clone <URL_DEL_REPOSITORIO>
+1. Clona el repositorio: `git clone https://github.com/davidtejedor01/TP_materias_Php.git`
 
 2. Copia el archivo .env.example y renómbralo a .env
 
 3. Configura las credenciales de la base de datos en el archivo .env.
 
-4. Instala las dependencias de Laravel: composer install
+4. Instala las dependencias de Laravel: `composer install`
 
-5. Genera la APP_KEY de Laravel: php artisan key:generate
+5. Genera la APP_KEY de Laravel: `php artisan key:generate`
 
-6. Ejecuta las migraciones para crear las tablas: php artisan migrate
+6. Ejecuta las migraciones para crear las tablas: `php artisan migrate`
 
-7. Inicia el servidor local de Laravel: php artisan serve
+7. Inicia el servidor local de Laravel: `php artisan serve`
